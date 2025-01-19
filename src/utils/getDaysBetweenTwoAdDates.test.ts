@@ -18,4 +18,11 @@ describe('getDaysBetweenTwoAdDates', () => {
     const endDate = new Date('2023-08-15')
     expect(getDaysBetweenTwoAdDates(startDate, endDate)).toBe(0)
   })
+
+  it('calculates the correct number of days ignoring partial days', () => {
+    const startDate = new Date();
+    const endDate = new Date();
+    endDate.setMinutes(startDate.getMinutes() + 5); // Add 5 minutes
+    expect(getDaysBetweenTwoAdDates(startDate, endDate)).toBe(0)
+  })
 })

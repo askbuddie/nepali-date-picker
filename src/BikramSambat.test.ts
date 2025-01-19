@@ -93,6 +93,11 @@ describe('BikramSambat Class', () => {
       expect(bikramSambat.toAD().toISOString().slice(0, 10)).toBe(adDate)
     })
   })
+  it('should properly convert dates to BikramSambat using both instance and static methods', () => {
+    const bsDateFromInstance = new BikramSambat().toString()
+    const bsDateFromStaticMethod = BikramSambat.fromAD(new Date()).toString();
+    expect(bsDateFromInstance).toEqual(bsDateFromStaticMethod)
+  })
   it('should properly convert to BikramSambat Date', () => {
     sampleData.forEach(([bsDate, adDate]) => {
       expect(BikramSambat.fromAD(adDate).toString()).toBe(bsDate)
